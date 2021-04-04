@@ -23,11 +23,16 @@ services:
     env_file:
       - ./.env
     image: sapan1812/qabotactions:1.1
-    ports:
+    ports:answer
       - 5055:5055
     networks: [ 'rasa-network' ]
-  duckling:
-    image: rasa/duckling:latest
+  rasa-x:
+    image: rasa/rasa-x:latest
+    expose:
+      - 5002
     ports:
-      - "8000:8000"
+      - 5002:5002
+    volumes:
+          - ./:/app
+    command: rasa x --no-prompt -m /models --endpoints /endpoints.yml --port 5005 --rasa-x-port 5002 --cors "*"
     networks: [ 'rasa-network' ]
