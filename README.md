@@ -1,4 +1,4 @@
------------------ All below commands if want to execute from command line -----------
+# ----------------- All below commands if want to execute from command line -----------
 
 # On windows #
 docker build . #no-cache -t sapan1812/qabot
@@ -20,7 +20,7 @@ docker run -d -v %cd%:/app/actions #net qabot_connect #name qabot-action sapan18
 # docker train
 docker run #user 1001 -v %cd%:/app sapan1812/qabot train
 
------------------ All below steps to execute Ui interactive shell ----------------
+# ----------------- All below steps to execute Ui interactive shell ----------------
 1. install docker on windows
 2. go to cloned repostiry folder
 3. open command line & execute  : "docker-compose up"
