@@ -1,0 +1,132 @@
+version: "2.0"
+
+nlu:
+- intent: welcome
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: subject
+  examples: |
+    - python
+    - Python
+    - 1
+    - 1.
+
+- intent: nonsubject
+  examples: |
+    - hadoop
+    - Swift
+    - swift
+    - 2
+    - 3
+    - Hadoop
+
+- intent: answer
+  examples: |
+
+    - isinstance(o, str) will return true if o is an str or is of a type that inherits from str.type(o) == str will return true if and only if o is a str. It will return false if o is of a type that inherits from str.
+    - The most Pythonic way to check the type of an object is... not to check it.Since Python encourages <a href="http://wikipedia.org/wiki/Duck_typing">Duck Typing, you should just try to use the object's methods the way you want to use them.  So if your function is looking for a writable file object, <em>don't</em> check that it's a subclass of file, just try to use its .write() method!Of course, sometimes these nice abstractions break down and isinstance(obj, cls) is what you need.  But use sparingly.
+    - I think the cool thing about using a dynamic language like python is you really shouldn't have to check something like that.I would just call the required methods on your object and catch an AttributeError. Later on this will allow you to call your methods with other (seemingly unrelated) objects to accomplish different tasks, such as mocking an object for testing.I've used this alot when getting data off the web with urllib2.urlopen() which returns a <em>file like</em> object. This can in turn can be passed to almost any method that reads from a file, because is implements the same read() method as a real file.But I'm sure there is a time and place for using isinstance(), otherwise it probably wouldn't be there :).
+    - To check if the type of o is exactly str:type(o) is strTo check if o is an instance of str or any subclass of str (this would be the "canonical" way):isinstance(o, str)The following also works, and can be useful in some cases:issubclass(type(o), str)type(o) in ([str] + str.__subclasses__())See <a href="http://docs.python.org/2/library/functions.html">Built-in Functions in the Python Library Reference for relevant information.One more note: in this case, you may actually want to use:isinstance(o, basestring)   because this will also catch Unicode strings (unicode is not a subclass of str; both str and unicode are subclasses of basestring).Alternatively, isinstance accepts a tuple of classes. This will return True if x is an instance of any subclass of any of (str, unicode):isinstance(o, (str, unicode)).
+    - the
+    - Python
+    - type
+    - the type of an object is
+    - check the type
+    - this would
+
+#- intent: subject
+#  examples: |
+#    - I want to take test
+#    -
+#    - I want to take exam
+#
+#- intent: goodbye
+#  examples: |
+#    - good afternoon
+#    - cu
+#    - good by
+#    - cee you later
+#    - good night
+#    - bye
+#    - goodbye
+#    - have a nice day
+#    - see you around
+#    - bye bye
+#    - see you later
+#
+#- intent: affirm
+#  examples: |
+#    - yes
+#    - y
+#    - indeed
+#    - of course
+#    - that sounds good
+#    - correct
+#
+#- intent: affirm
+#  examples: |
+#    - yes
+#
+#- intent: deny
+#  examples: |
+#    - no
+#    - n
+#    - never
+#    - I don't think so
+#    - don't like that
+#    - no way
+#    - not really
+#
+#- intent: mood_great
+#  examples: |
+#    - perfect
+#    - great
+#    - amazing
+#    - feeling like a king
+#    - wonderful
+#    - I am feeling very good
+#    - I am great
+#    - I am amazing
+#    - I am going to save the world
+#    - super stoked
+#    - extremely good
+#    - so so perfect
+#    - so good
+#    - so perfect
+#
+#- intent: mood_unhappy
+#  examples: |
+#    - my day was horrible
+#    - I am sad
+#    - I don't feel very well
+#    - I am disappointed
+#    - super sad
+#    - I'm so sad
+#    - sad
+#    - very sad
+#    - unhappy
+#    - not good
+#    - not very good
+#    - extremly sad
+#    - so saad
+#    - so sad
+#
+#- intent: bot_challenge
+#  examples: |
+#    - are you a bot?
+#    - are you a human?
+#    - am I talking to a bot?
+#    - am I talking to a human?
