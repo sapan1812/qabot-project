@@ -1,0 +1,35 @@
+version: '3.0'
+
+services:
+  qabot:
+    env_file:
+      - ./.env
+    build: .
+    image: sapan1812/qabot:latest
+    ports:
+      - 5005:5005
+    volumes:
+      - ./models:/app/models
+      - ./config:/app/config
+    command:
+      - rasa
+      - run
+      - --enable-api
+      - --model
+      - /app/models
+      - --endpoints
+      - /app/config/endpoints.yml
+
+  action_server:
+    env_file:
+      - ./.env
+    build: actions
+    image: sapan1812/qabotactions:1.1
+    volumes:
+      - ./actions:/app/actions
+    command:
+      - python
+      - -m
+      - rasa_sdk
+      - --actions
+      - actions

@@ -32,7 +32,6 @@ responses:
   - text: "Not Available"
 
 actions:
-
   - action_ready
   - action_ask_question
   - get_answer

@@ -26,7 +26,6 @@ from nltk.stem.porter import *
 # from spellchecker import SpellChecker
 # import string
 import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 import gensim
 from gensim import models
@@ -38,7 +37,6 @@ from wordcloud import WordCloud
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet, EventType
 from rasa_sdk.executor import CollectingDispatcher
-import webbrowser
 
 QUESTIONS_FINAL = []
 ANSWERS_FINAL = []
@@ -55,7 +53,7 @@ class ActionReady(Action):
     def get_question(self):
         import csv, random
         questions = set()
-        with open("C:\RASA\python_demo.csv", "r", encoding="utf-8") as f:
+        with open("python_demo.csv", "r", encoding="utf-8") as f:
             reader = csv.reader(f)
             for row in reader:
                 questions.add(row[4])
