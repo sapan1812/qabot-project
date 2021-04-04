@@ -1,35 +1,33 @@
 version: '3.0'
-
+networks: {rasa-network: {}}
 services:
-  qabot:
+  rasa_chatbot:
     env_file:
       - ./.env
     build: .
-    image: sapan1812/qabot:latest
+    image: rasa-chatbot:latest
     ports:
       - 5005:5005
     volumes:
       - ./models:/app/models
       - ./config:/app/config
     command:
-      - rasa
       - run
       - --enable-api
       - --model
       - /app/models
       - --endpoints
-      - /app/config/endpoints.yml
-
-  action_server:
+      - /app/config/endpoints.local.yml
+    networks: [ 'rasa-network' ]
+  qabot-action:
     env_file:
       - ./.env
-    build: actions
     image: sapan1812/qabotactions:1.1
-    volumes:
-      - ./actions:/app/actions
-    command:
-      - python
-      - -m
-      - rasa_sdk
-      - --actions
-      - actions
+    ports:
+      - 5055:5055
+    networks: [ 'rasa-network' ]
+  duckling:
+    image: rasa/duckling:latest
+    ports:
+      - "8000:8000"
+    networks: [ 'rasa-network' ]
