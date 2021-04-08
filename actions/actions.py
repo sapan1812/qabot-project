@@ -371,7 +371,7 @@ class ActionGetSimilarity(Action):
                     W8=Wait...
                     7K=Sick:-D Laugher"""
 
-        tags = pd.read_csv('D:\Dataset\Tags.csv\Tags.csv', sep=',')
+        tags = pd.read_csv('Tags.csv', sep=',')
         # tags.head()
 
         # tags.info()
@@ -389,7 +389,7 @@ class ActionGetSimilarity(Action):
         python_questions_df = pd.DataFrame()
         chunksize = 10000
         i = 0
-        for chunk in pd.read_csv('D:\Dataset\Questions.csv\Questions.csv', chunksize=chunksize,
+        for chunk in pd.read_csv('Questions.csv', chunksize=chunksize,
                                  encoding="ISO-8859-1"):
             if i < 2:
                 temp_questions_df = pd.merge(chunk, python_tags_df, on='Id', how='inner')
@@ -404,7 +404,7 @@ class ActionGetSimilarity(Action):
 
         python_answers_df = pd.DataFrame()
         i = 0
-        for chunk in pd.read_csv('D:\Dataset\Answers.csv\Answers.csv', chunksize=chunksize,
+        for chunk in pd.read_csv('Answers.csv', chunksize=chunksize,
                                  encoding="ISO-8859-1"):
             if i < 4:
                 temp_questions_df = pd.merge(chunk, python_tags_df, how='inner', left_on=['ParentId'], right_on=['Id'])
